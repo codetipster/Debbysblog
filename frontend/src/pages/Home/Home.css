@@ -1,0 +1,27 @@
+.contentSpace {
+    flex-wrap: wrap;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.landingHomeForAds {
+    flex: 1;
+    background-color: #8959F3;
+    border-radius: 5px;
+    height: 250px;
+    color: #fff;
+    /* box-shadow: 0 0 10px rgba(0,0,0,0.2); */
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+    .contentSpace {
+      justify-content: center;  /* Center the items on mobile */
+      
+    }
+  }
