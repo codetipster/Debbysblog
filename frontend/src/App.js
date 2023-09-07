@@ -7,6 +7,10 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
+//import Admin from "./pages/Admin/Admin";
+import Signin from "./pages/Admin/Auth/Signin";
+import Signup from "./pages/Admin/Auth/Signup";
+import Admin from "./pages/Admin/Admin";
 
 //creating theme colors for the website
 const theme = createTheme({
@@ -35,6 +39,10 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/admin" element={<Signin />} />
+                <Route path="/admin/register" element={<Signup />} />
+                <Route path="/admin/dashboard" element={<Admin/>} />
+
               </Routes>  
             </Container>
             
