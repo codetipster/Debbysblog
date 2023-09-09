@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Link, useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 import CardInfo from "../../components/CardInfo/CardInfo";
 import "./Home.css";
@@ -7,7 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 
 const Home = () => {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
   const blogPostCollectionRef = collection(db, "BlogPosts"); // Reference to the BlogPosts collection
 
@@ -18,7 +18,7 @@ const Home = () => {
       
     };
     getBlogs();
-  }, []);
+  }, [blogPostCollectionRef]);
 
   console.log(blogs);
 

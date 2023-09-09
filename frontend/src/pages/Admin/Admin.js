@@ -9,7 +9,7 @@ import UploadIcon from "@mui/icons-material/CloudUpload";
 import StoreIcon from "@mui/icons-material/Store";
 import EditIcon from "@mui/icons-material/Edit";
 import HomeIcon from "@mui/icons-material/Home";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
   const navigate =  useNavigate();

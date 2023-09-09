@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db, storage } from "../../../firebase";  // Adjust this import to your file structure
+import { db } from "../../../firebase";  // Adjust this import to your file structure
 
 import { Button, TextField, TextareaAutosize } from "@mui/material";
 import ReactQuill from "react-quill";
@@ -23,7 +23,7 @@ const CreateBlog = () => {
     const storage = getStorage();
     const storageRef = ref(storage, "blog_images/" + file.name);
     const blogPostCollectionRef = collection(db, "BlogPosts"); // Reference to the BlogPosts collection
-    
+
     // Upload the file to Firebase Storage
     const uploadTask = uploadBytes(storageRef, file);
   

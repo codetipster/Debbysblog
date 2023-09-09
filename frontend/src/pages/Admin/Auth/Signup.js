@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 //import LoadingOverlay from "../components/LoadingOverlay";  // Update with your correct path
 import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
 import { auth }  from "../../../firebase";
@@ -9,7 +9,7 @@ function Signup() {
   const [email , setEmail ] = useState("");
   const [password, setPassword] = useState("");
   //const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();  // Hook for navigation
+  //const navigate = useNavigate();  // Hook for navigation
   
   //firebase authentication
   const handleSubmit = async (e) => {

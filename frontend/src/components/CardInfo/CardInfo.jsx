@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
-import image from "../../assets/image.jpg";  // Importing image
+//import image from "../../assets/image.jpg";  // Importing image
 
 // eslint-disable-next-line react/prop-types
 export default function CardInfo({ fileUrl, title, summary }) {
