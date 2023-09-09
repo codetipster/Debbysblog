@@ -6,23 +6,23 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import image from "../../assets/image.jpg";  // Importing image
 
-export default function CardInfo() {
+// eslint-disable-next-line react/prop-types
+export default function CardInfo({ fileUrl, title, summary }) {
   return (
     <Card sx={{ maxWidth: { xs: 340, sm: 254 } }}> {/* Using maxWidth conditionally */}
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image= {image} // Using image
+          image={fileUrl} // Using image
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h6" >
-            Lizard
+          <Typography gutterBottom variant="h6">
+            {title}
           </Typography>
           <Typography variant="body3" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {summary}
           </Typography>
         </CardContent>
       </CardActionArea>

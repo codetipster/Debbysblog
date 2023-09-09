@@ -11,6 +11,7 @@ import Contact from "./pages/Contact/Contact";
 import Signin from "./pages/Admin/Auth/Signin";
 import Signup from "./pages/Admin/Auth/Signup";
 import Admin from "./pages/Admin/Admin";
+import CreateBlog from "./pages/Admin/CreateBlog/CreateBlog";
 
 //creating theme colors for the website
 const theme = createTheme({
@@ -42,7 +43,7 @@ function App() {
                 <Route path="/admin" element={<Signin />} />
                 <Route path="/admin/register" element={<Signup />} />
                 <Route path="/admin/dashboard" element={<Admin/>} />
-
+                <Route path="/admin/dashboard/create" element={<CreateBlog/>}/>
               </Routes>  
             </Container>
             
