@@ -73,7 +73,7 @@ function Header(props) {
             component="div"
             sx={{ fontFamily: "Dancing Script", fontWeight: 700, flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Debbys Blog
+            Deborahs Blog
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
