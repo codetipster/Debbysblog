@@ -12,6 +12,7 @@ import Signin from "./pages/Admin/Auth/Signin";
 import Signup from "./pages/Admin/Auth/Signup";
 import Admin from "./pages/Admin/Admin";
 import CreateBlog from "./pages/Admin/CreateBlog/CreateBlog";
+import BlogDetail from "./pages/BlogDetail/BlogDetail";
 
 //creating theme colors for the website
 const theme = createTheme({
@@ -44,6 +45,7 @@ function App() {
                 <Route path="/admin/register" element={<Signup />} />
                 <Route path="/admin/dashboard" element={<Admin/>} />
                 <Route path="/admin/dashboard/create" element={<CreateBlog/>}/>
+                <Route path="/blog/:id" element={<BlogDetail/>} /> {/* New Route */}
               </Routes>  
             </Container>
             
