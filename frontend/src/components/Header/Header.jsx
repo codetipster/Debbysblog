@@ -35,7 +35,7 @@ function Header(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ fontFamily: "Dancing Script", fontWeight: 700, my: 2 }}>
-        Debbys Blog
+        Deborahs Blog
       </Typography>
       <Divider />
       <List>
