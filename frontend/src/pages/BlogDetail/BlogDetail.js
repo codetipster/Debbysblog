@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
-
+import DOMPurify from "dompurify";
 const BlogDetail = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
@@ -36,7 +36,7 @@ const BlogDetail = () => {
           </div>
         
           <h1>{blog.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blog.content) }} />
         </>
       ) : (
         <p>Loading...</p>
