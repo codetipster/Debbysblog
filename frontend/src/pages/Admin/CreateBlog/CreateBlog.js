@@ -6,6 +6,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // import styles
 import { collection, addDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { useSnackbar } from "notistack";
 
 
 const CreateBlog = () => {
@@ -13,6 +14,7 @@ const CreateBlog = () => {
   const [content, setContent] = useState("");
   const [summary, setSummary] = useState("");
   const [file, setFile] = useState(null);
+  const { enqueueSnackbar } = useSnackbar(); // notistack hook
 
   
 
@@ -49,9 +51,9 @@ const CreateBlog = () => {
         setContent("");
         setSummary("");
         setFile(null);
-        alert("Blog post created successfully");
+        enqueueSnackbar("Blog post created Successfully!", { variant: "success" });
       } catch (error) {
-        console.error("Error writing new post to Firestore", error);
+        enqueueSnackbar(`failed: ${error}`, { variant: "error" });
       }
     });
   };

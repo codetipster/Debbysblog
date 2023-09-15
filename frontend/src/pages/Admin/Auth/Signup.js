@@ -4,12 +4,14 @@ import React, { useState } from "react";
 import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
 import { auth }  from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useSnackbar } from "notistack";
 
 function Signup() {
   const [email , setEmail ] = useState("");
   const [password, setPassword] = useState("");
   //const [isLoading, setIsLoading] = useState(false);
   //const navigate = useNavigate();  // Hook for navigation
+  const { enqueueSnackbar } = useSnackbar(); // notistack hook
   
   //firebase authentication
   const handleSubmit = async (e) => {
@@ -17,12 +19,14 @@ function Signup() {
     //setIsLoading(true);  // Start loading when the request starts
     createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
       // Signed in 
-      const user = userCredential.user;
-      console.log(user);
+      //const user = userCredential.user;
+      enqueueSnackbar("Account created Successfully!", { variant: "success" });
+      // console.log(user);
     }).catch((error) => {
-      const errorCode = error.code;
+      //const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
+      enqueueSnackbar(`failed: ${errorMessage}`, { variant: "error" });
+      // console.log(errorCode, errorMessage);
     });
   };
     
