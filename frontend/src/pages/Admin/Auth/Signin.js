@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
 import { auth }  from "../../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useSnackbar } from "notistack";
 
 
 function Signin() {
@@ -11,6 +12,7 @@ function Signin() {
   const [password, setPassword] = useState("");
   //const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();  // Hook for navigation
+  const { enqueueSnackbar } = useSnackbar(); // notistack hook
   
   //firebase authentication
   const handleSubmit = async (e) => {
@@ -21,12 +23,14 @@ function Signin() {
       const user = userCredential.user;
       console.log(user);
       if (user) {
+        enqueueSnackbar("Successfully logged in!", { variant: "success" });
         navigate("/admin/dashboard");
       }
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, errorMessage);
+      enqueueSnackbar(`Login failed: ${errorMessage}`, { variant: "error" });
     });
   };
     

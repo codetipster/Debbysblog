@@ -13,6 +13,7 @@ import Signup from "./pages/Admin/Auth/Signup";
 import Admin from "./pages/Admin/Admin";
 import CreateBlog from "./pages/Admin/CreateBlog/CreateBlog";
 import BlogDetail from "./pages/BlogDetail/BlogDetail";
+import { SnackbarProvider } from "notistack";
 
 //creating theme colors for the website
 const theme = createTheme({
@@ -30,29 +31,34 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <Box display="flex" flexDirection="column" minHeight="100vh">
-          <Header />
-          <Box flex="1">
-            {/* Main content */}
+      <SnackbarProvider maxSnack={3}   anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}>
+        <Router>
+          <Box display="flex" flexDirection="column" minHeight="100vh">
+            <Header />
+            <Box flex="1">
+              {/* Main content */}
             
-            <Container maxWidth="lg">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/admin" element={<Signin />} />
-                <Route path="/admin/register" element={<Signup />} />
-                <Route path="/admin/dashboard" element={<Admin/>} />
-                <Route path="/admin/dashboard/create" element={<CreateBlog/>}/>
-                <Route path="/blog/:id" element={<BlogDetail/>} /> {/* New Route */}
-              </Routes>  
-            </Container>
+              <Container maxWidth="lg">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/admin" element={<Signin />} />
+                  <Route path="/admin/register" element={<Signup />} />
+                  <Route path="/admin/dashboard" element={<Admin/>} />
+                  <Route path="/admin/dashboard/create" element={<CreateBlog/>}/>
+                  <Route path="/blog/:id" element={<BlogDetail/>} /> {/* New Route */}
+                </Routes>  
+              </Container>
             
+            </Box>
+            <Footer />
           </Box>
-          <Footer />
-        </Box>
-      </Router>  
+        </Router>  
+      </SnackbarProvider>
     </ThemeProvider>
   );
 }

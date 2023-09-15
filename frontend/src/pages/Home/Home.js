@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import CardInfo from "../../components/CardInfo/CardInfo";
@@ -34,6 +35,8 @@ const Home = () => {
       <div className="landingHomeForAds">
         <h1>Contact us to place your ads here. </h1>
         <h6>Send an email with your request to admin@iamdebbyrose.com </h6>
+        {/* // eslint-disable-next-line jsx-a11y/iframe-has-title */}
+        {/* <iframe src="https://getmika.retool.com/apps/Invoice-Previewer" width="100%" height="800px"></iframe> */}
       </div>
       <h3>Latest Blogs</h3> {/* For SEO and clarity */}
       <div className="contentSpace">
@@ -49,3 +52,5 @@ const Home = () => {
 };
 
 export default Home;
+
+

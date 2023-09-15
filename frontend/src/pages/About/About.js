@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { Box, Typography, Container, Button,  TextField, Divider } from "@mui/material";
 import { Link } from "react-router-dom"; 
+import Avatar from "@mui/material/Avatar";
+
 
 const About = () => {
   const [email, setEmail] = useState("");
@@ -17,11 +19,20 @@ const About = () => {
   return (
     <Container>
       <Box my={4}>
+        <Box display="flex" justifyContent="flex-end" alignItems="center">
+          <Typography variant="h4" component="div" sx={{ marginRight: 2 }}>
+          Debbyrose
+          </Typography>
+          <Avatar
+            alt="Debby's Profile Picture"
+            src="path/to/your/image.jpg"
+            sx={{ width: 200, height: 200 }}
+          />
+        </Box>
         <Typography variant="h2" component="h1" gutterBottom>
           {/* // eslint-disable-next-line react/no-unescaped-entities */}
           About Debby&apos;s Data Blog
         </Typography>
-        
         <Typography variant="h4">
           Meet Debby, Your Go-to Expert for Data Management and Excel Tips
         </Typography>
@@ -62,7 +73,7 @@ const About = () => {
           </Typography>
         </section>
 
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box display="flex" justifyContent="space-between" alignItems="center"  mt={20}>
           {/* Newsletter Section */}
           <Box flex={1} textAlign="center" p={3}>
             <Typography variant="h5" gutterBottom>
