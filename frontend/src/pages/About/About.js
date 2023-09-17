@@ -1,11 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Box, Typography, Container, Button,  TextField, Divider } from "@mui/material";
 import { Link } from "react-router-dom"; 
 import Avatar from "@mui/material/Avatar";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
+import { getDownloadURL, ref } from "firebase/storage";
+import { storage } from "../../firebase";  // Update with your correct path
+
 
 
 const About = () => {
   const [email, setEmail] = useState("");
+  const [sections, setSections] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const [avatarUrl, setAvatarUrl] = useState("");
+
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -16,6 +28,41 @@ const About = () => {
     setEmail(""); 
   };
 
+  const aboutPageCollectionRef = collection(db, "About"); 
+  useEffect(() => {
+    const getSections = async () => {
+      try {
+        const data = await getDocs(aboutPageCollectionRef);
+        setSections(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getSections();
+
+    // Fetch the avatar
+    const avatarRef = ref(storage, "aboutImage/Screenshot 2023-06-16 at 16.45.49.png");  // Update path
+    getDownloadURL(avatarRef)
+      .then((url) => {
+        setAvatarUrl(url);
+      })
+      .catch((error) => {
+        console.error("Error fetching avatar: ", error);
+      });
+
+  }, []);
+
+
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  const aboutDebby = sections.find(section => section.id === "AboutBlogger")?.DescribeBlogger || "";
+  const whyThisBlog = sections.find(section => section.id === "TheWhy")?.Why || "";
+  const aboutPageTitle = sections.find(section => section.id === "Title")?.theme || "";
+
   return (
     <Container>
       <Box my={4}>
@@ -25,24 +72,20 @@ const About = () => {
           </Typography>
           <Avatar
             alt="Debby's Profile Picture"
-            src="path/to/your/image.jpg"
+            src={avatarUrl}
             sx={{ width: 200, height: 200 }}
           />
         </Box>
         <Typography variant="h2" component="h1" gutterBottom>
-          {/* // eslint-disable-next-line react/no-unescaped-entities */}
-          About Debby&apos;s Data Blog
-        </Typography>
-        <Typography variant="h4">
-          Meet Debby, Your Go-to Expert for Data Management and Excel Tips
+          {aboutPageTitle}
         </Typography>
 
         <section id="about-debby">
           <Typography variant="h5" gutterBottom>
-            About Debby
+            About
           </Typography>
           <Typography paragraph>
-            [Insert Debby`&apos;`s background information, skills, and a bit about her personal life here.]
+            {aboutDebby}
           </Typography>
         </section>
 
@@ -51,25 +94,7 @@ const About = () => {
             Why This Blog Exists
           </Typography>
           <Typography paragraph>
-            [Explain the challenges in data management and Excel, and the blog mission.]
-          </Typography>
-        </section>
-
-        <section id="what-you-will-learn">
-          <Typography variant="h5" gutterBottom>
-            What You Will Learn
-          </Typography>
-          <Typography paragraph>
-            [Describe the topics Debby will cover and the target audience.]
-          </Typography>
-        </section>
-
-        <section id="success-stories">
-          <Typography variant="h5" gutterBottom>
-            Success Stories
-          </Typography>
-          <Typography paragraph>
-            [Insert any testimonials or success stories from readers if available.]
+            {whyThisBlog}
           </Typography>
         </section>
 

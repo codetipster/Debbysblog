@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 const Admin = () => {
   const navigate =  useNavigate();
   const handleCreate = (() => navigate("/admin/dashboard/create"));
+  const handleEditAbout = (() => navigate("/about/edit"));
 
   return (
     <div>
@@ -47,7 +48,7 @@ const Admin = () => {
           <ListItemText primary="Add Product to Store" />
         </ListItem>
 
-        <ListItem button onClick={() => console.log("Edit About Page")}>
+        <ListItem button onClick={handleEditAbout}>
           <ListItemIcon>
             <EditIcon style={{ color: "#8A5BF2" }} />
           </ListItemIcon>
