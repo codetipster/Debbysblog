@@ -1,5 +1,6 @@
 import React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { AuthProvider } from "./context/AuthProvider";
 import { Box, Container } from "@mui/material";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -30,36 +31,39 @@ const theme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <SnackbarProvider maxSnack={3}   anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}>
-        <Router>
-          <Box display="flex" flexDirection="column" minHeight="100vh">
-            <Header />
-            <Box flex="1">
-              {/* Main content */}
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <SnackbarProvider maxSnack={3}   anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}>
+          <Router>
+            <Box display="flex" flexDirection="column" minHeight="100vh">
+              <Header />
+              <Box flex="1">
+                {/* Main content */}
             
-              <Container maxWidth="lg">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/admin" element={<Signin />} />
-                  <Route path="/admin/register" element={<Signup />} />
-                  <Route path="/admin/dashboard" element={<Admin/>} />
-                  <Route path="/admin/dashboard/create" element={<CreateBlog/>}/>
-                  <Route path="/blog/:id" element={<BlogDetail/>} /> {/* New Route */}
-                </Routes>  
-              </Container>
+                <Container maxWidth="lg">
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/admin" element={<Signin />} />
+                    <Route path="/admin/register" element={<Signup />} />
+                    <Route path="/admin/dashboard" element={<Admin/>} />
+                    <Route path="/admin/dashboard/create" element={<CreateBlog/>}/>
+                    <Route path="/blog/:id" element={<BlogDetail/>} /> {/* New Route */}
+                    <Route path="/about/edit" element={<About isEditable={true} />} /> 
+                  </Routes>  
+                </Container>
             
+              </Box>
+              <Footer />
             </Box>
-            <Footer />
-          </Box>
-        </Router>  
-      </SnackbarProvider>
-    </ThemeProvider>
+          </Router>  
+        </SnackbarProvider>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 
