@@ -68,6 +68,7 @@ const About = ({ isEditable: initialIsEditable }) => {
     const file = e.target.files[0];
     const storageRef = ref(storage, `aboutImage/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
+    //const storageRef = ref(storage, "aboutImage/avatar.png");
 
     uploadTask.on("state_changed",
       (snapshot) => {
